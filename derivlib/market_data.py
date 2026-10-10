@@ -9,17 +9,17 @@ from datetime import datetime, timezone
 import pandas as pd
 
 
-def load_chain(ticker: str = "SPY", expiry_index: int = 2):
-    """Return (chain, spot, T_years, expiry) for one listed expiry.
+def load_chain(ticker: str = "SPY", target_days: int = 30):
+    """Return (chain, spot, T_years, expiry) for the listed expiry closest to target_days out.
 
     chain has columns strike, price (bid/ask mid), option ('call'/'put').
-    expiry_index picks the n-th listed expiry; 2-3 avoids the noisy weeklies.
+    About a month out avoids the noisy front weeklies while staying liquid.
     """
     import yfinance as yf
 
     tk = yf.Ticker(ticker)
     today = datetime.now(timezone.utc).date()
-    expiry = min(tk.options, key=lambda e: abs((datetime.strptime(e, "%Y-%m-%d").date() - today).days - 30))
+    expiry = min(tk.options, key=lambda e: abs((datetime.strptime(e, "%Y-%m-%d").date() - today).days - target_days))
     oc = tk.option_chain(expiry)
     spot = float(tk.history(period="1d")["Close"].iloc[-1])
 
