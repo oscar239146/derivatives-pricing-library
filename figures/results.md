@@ -26,7 +26,7 @@ Control variate cuts the standard error 36x, equivalent to 1,312x more paths.
 | 1600 | 0.25 | 1.59e-04 |
 
 ## American put (S=K=100)
-PDE (Brennan–Schwartz, 800x400 grid, 0.60s): 6.0895  |  CRR tree (5000 steps): 6.0902  |  European: 5.5735  |  early-exercise premium: 0.5160
+PDE (Brennan–Schwartz, 800x400 grid, 0.88s): 6.0895  |  CRR tree (5000 steps): 6.0902  |  European: 5.5735  |  early-exercise premium: 0.5160
 
 ## Call Greeks three ways (S=K=100)
 | Greek | Analytic | Bump (on BS) | Bump (on MC, common random numbers) | Pathwise MC |
@@ -34,9 +34,6 @@ PDE (Brennan–Schwartz, 800x400 grid, 0.60s): 6.0895  |  CRR tree (5000 steps):
 | Delta | 0.6368 | 0.6368 | 0.6346 | 0.6370 ± 0.0013 |
 | Gamma | 0.0188 | 0.0188 | 0.0189 | n/a (payoff kink) |
 | Vega | 37.524 | 37.524 | 37.298 | 37.457 ± 0.169 |
-
-## Implied vol recovery
-Max |recovered − true| vol on synthetic chain: 7.9e-10
 
 ## Delta-hedged short call: P&L vs rebalancing frequency (10k paths, real drift 10%)
 | Rebalances / year | Mean P&L | Std dev P&L |
