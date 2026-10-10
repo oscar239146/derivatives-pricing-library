@@ -18,7 +18,8 @@ def load_chain(ticker: str = "SPY", expiry_index: int = 2):
     import yfinance as yf
 
     tk = yf.Ticker(ticker)
-    expiry = tk.options[expiry_index]
+    today = datetime.now(timezone.utc).date()
+    expiry = min(tk.options, key=lambda e: abs((datetime.strptime(e, "%Y-%m-%d").date() - today).days - 30))
     oc = tk.option_chain(expiry)
     spot = float(tk.history(period="1d")["Close"].iloc[-1])
 

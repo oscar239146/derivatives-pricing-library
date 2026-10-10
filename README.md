@@ -104,10 +104,12 @@ Implementation notes:
 
 ![IV smile](figures/iv_smile.png)
 
-Newton–Raphson using vega, with a Brent bracketing fallback when vega is tiny. It
-rejects prices that violate no-arbitrage bounds. On a synthetic chain with known
-skew, recovered vols match to 8e-10. Run with `--ticker SPY` to fit the smile to a
-live chain (out-of-the-money puts below spot, calls above, bid/ask mid prices).
+Newton–Raphson using vega, with a Brent bracketing fallback when vega is tiny; prices that
+violate no-arbitrage bounds are rejected. Fitted to a live SPY option chain (out-of-the-money
+puts below spot, calls above, bid/ask mids), the smile shows the classic equity skew:
+implied vol rises from about 9% just above spot to about 26% for strikes 6% below, the market
+pricing crash risk that Black–Scholes' constant volatility ignores. On a synthetic chain with
+known skew, recovered vols match the true ones to 1e-9.
 
 ### 5. Delta hedging
 
