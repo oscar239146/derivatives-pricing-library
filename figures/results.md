@@ -26,7 +26,7 @@ Control variate cuts the standard error 36x, equivalent to 1,312x more paths.
 | 1600 | 0.25 | 1.59e-04 |
 
 ## American put (S=K=100)
-PDE (Brennan–Schwartz, 800x400 grid, 0.67s): 6.0895  |  CRR tree (5000 steps): 6.0902  |  European: 5.5735  |  early-exercise premium: 0.5160
+PDE (Brennan–Schwartz, 800x400 grid, 0.71s): 6.0895  |  CRR tree (5000 steps): 6.0902  |  European: 5.5735  |  early-exercise premium: 0.5160
 
 ## Call Greeks three ways (S=K=100)
 | Greek | Analytic | Bump (on BS) | Bump (on MC, common random numbers) | Pathwise MC |
